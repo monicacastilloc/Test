@@ -20,7 +20,7 @@ switch($_GET['Consultar']){
 		default:
 			$now = date("U") - 1530309600 . PHP_EOL; //timestamp database
 			$dayago = date("U") - 1530309600 - 86400 . PHP_EOL; //timestamp database menos un dia
-			$stmt=$pdo->prepare("SELECT (1530309600 + start_date)*1000 as x, pyrgeo as y FROM clouds_lasilla WHERE start_date > $dayago ORDER BY start_date ASC LIMIT 1000");
+			$stmt=$pdo->prepare("SELECT (1530309600 + start_date)*1000 as x, pyrgeo as y FROM clouds_lasilla WHERE start_date > $dayago ORDER BY start_date ASC");
 			$stmt->execute();
 			$rows=$stmt->fetchAll(PDO::FETCH_ASSOC);
 			$json=json_encode($rows, JSON_NUMERIC_CHECK);
